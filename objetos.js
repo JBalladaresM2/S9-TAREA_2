@@ -13,7 +13,18 @@
 
 const empleado = {nombre: "Ana", edad: 25}
 
-console.log(`El nombre "${empleado.nombre}" tiene ${empleado.nombre.length} caracteres`)
+function CantCaracteres(nombre) {
+    cantidad = 0
+    for (let letra of nombre) {
+        cantidad++
+    }
+    return cantidad
+}
+
+const nombre_empleado = empleado.nombre
+const caracteres_nombre = CantCaracteres(nombre_empleado)
+
+console.log(`El nombre "${nombre_empleado}" tiene ${caracteres_nombre} caracteres`)
 
 // 2. Contar apariciones de una vocal en el nombre de un producto
 // Descripción:
@@ -28,15 +39,23 @@ console.log(`El nombre "${empleado.nombre}" tiene ${empleado.nombre.length} cara
 // La vocal 'o' aparece 3 veces en 'Programador'.
 
 const producto = {nombre: "Programador", precio: 100}
-let contador = 0
 
-for (let i = 0; i < producto.nombre.length; i++) {
-    if (producto.nombre[i] === "o") {
-        contador++
+function LetraRepetida(texto, letra) {
+    contador = 0
+    for (let letra_texto of texto) {
+        if (letra_texto === letra) {
+            contador++
+        }
     }
+    return contador
 }
 
-console.log(`La vocal 'o' aparece ${contador} veces en "${producto.nombre}"`)
+const nombre_producto = producto.nombre
+const letra = "o"
+const veces_letra = LetraRepetida(nombre_producto, letra)
+
+
+console.log(`La vocal "${letra}" aparece ${veces_letra} veces en "${nombre_producto}"`)
 
 // 3. Invertir el nombre de una persona
 // Descripción:
@@ -49,11 +68,17 @@ console.log(`La vocal 'o' aparece ${contador} veces en "${producto.nombre}"`)
 // Nombre invertido: solraC
 
 const persona = {nombre: "Carlos", edad: 30}
-let nombre_invertido = ""
 
-for (let i = persona.nombre.length - 1; i >= 0; i--) {
-    nombre_invertido+= persona.nombre[i]
+function InvertirTexto(texto) {
+    texto_invertido = ""
+    for (let i = texto.length - 1; i >= 0; i--) {
+        texto_invertido+= texto[i]
+    }
+    return texto_invertido
 }
+
+const nombre_persona = persona.nombre
+const nombre_invertido = InvertirTexto(nombre_persona)
 
 console.log(`Nombre invertido: ${nombre_invertido}`)
 
@@ -71,10 +96,21 @@ console.log(`Nombre invertido: ${nombre_invertido}`)
 const empleado1 = {"nombre": "María", "edad": 28}
 const empleado2 = {"nombre": "Guillermo", "edad": 35}
 
-if (empleado1.nombre.length > empleado2.nombre.length) {
-    console.log(`El empleado con el nombre más largo es "${empleado1.nombre}" (${empleado1.nombre.length} letras)`)
+function CompararCantCaracteres(texto1, texto2) {
+    if (CantCaracteres(texto1) > CantCaracteres(texto2)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+const nombre_empleado1 = empleado1.nombre
+const nombre_empleado2 = empleado2.nombre
+
+if (CompararCantCaracteres(nombre_empleado1, nombre_empleado2)) {
+    console.log(`El empleado con el nombre más largo es "${nombre_empleado1}" (${CantCaracteres(nombre_empleado1)} letras)`)
 } else {
-    console.log(`El empleado con el nombre más largo es "${empleado2.nombre}" (${empleado2.nombre.length} letras)`)
+    console.log(`El empleado con el nombre más largo es "${nombre_empleado2}" (${CantCaracteres(nombre_empleado2)} letras)`)
 }
 
 // 5. Obtener iniciales del cargo de un empleado
@@ -89,14 +125,19 @@ if (empleado1.nombre.length > empleado2.nombre.length) {
 // D.G.A.
 
 const c_empleado = {"cargo": "Director General Académico"}
-let segmentos = c_empleado.cargo.split(" ")
-let iniciales = []
 
-for (let i = 0; i < segmentos.length; i++) {
-    iniciales.push(segmentos[i][0])
+function InicialesFrase(texto) {
+    segmentos = texto.split(" ")
+    iniciales = []
+    for (let i = 0; i < segmentos.length; i++) {
+        iniciales.push(segmentos[i][0])
+    }
+    return iniciales
 }
 
-console.log(`${iniciales}`)
+const frase = c_empleado.cargo
+
+console.log(`${InicialesFrase(frase)}`)
 
 // 🧱 Bloque 2: Objetos en Listas (versión con arreglos de objetos)
 
