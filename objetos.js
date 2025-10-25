@@ -318,6 +318,10 @@ function ejercicio_25() {
 // Salida:
 // Promedio de notas ≥ 70: 81.67
 
+function ejercicio_31() {
+
+}
+
 // 2. Contar empleados con edad negativa o inválida
 // Descripción:
 // Detectar si hay edades erróneas (negativas o nulas) en una lista de empleados.
@@ -331,6 +335,10 @@ function ejercicio_25() {
 // Contar edades ≤ 0.
 // Salida:
 // Cantidad de edades inválidas: 2
+
+function ejercicio_32() {
+    
+}
 
 // 3. Promedio de edad: mayores vs menores de edad
 // Entrada:
@@ -348,6 +356,10 @@ function ejercicio_25() {
 // Promedio de mayores: 24.33  
 // Promedio de menores: 16.00
 
+function ejercicio_33() {
+    
+}
+
 // 4. Mostrar la tabla de multiplicar del salario
 // Descripción:
 // Mostrar la tabla de multiplicar (1 al 10) del salario de un empleado.
@@ -359,6 +371,10 @@ function ejercicio_25() {
 // Salida:
 // Tabla del salario (300):
 // 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000
+
+function ejercicio_34() {
+    
+}
 
 // 5. Promedio de salarios pares e impares
 // Entrada:
@@ -375,3 +391,7 @@ function ejercicio_25() {
 // Salida:
 // Promedio de salarios pares: 650.0  
 // Promedio de salarios impares: 593.33
+
+function ejercicio_35() {
+    
+}
