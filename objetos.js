@@ -11,8 +11,6 @@
 // Salida:
 // El nombre 'Ana' tiene 3 caracteres.
 
-const empleado = {nombre: "Ana", edad: 25}
-
 function CantCaracteres(nombre) {
     cantidad = 0
     for (let letra of nombre) {
@@ -21,10 +19,12 @@ function CantCaracteres(nombre) {
     return cantidad
 }
 
-const nombre_empleado = empleado.nombre
-const caracteres_nombre = CantCaracteres(nombre_empleado)
-
-console.log(`El nombre "${nombre_empleado}" tiene ${caracteres_nombre} caracteres`)
+function ejercicio_11() {
+    const empleado = {nombre: "Ana", edad: 25}
+    const nombre_empleado = empleado.nombre
+    const caracteres_nombre = CantCaracteres(nombre_empleado)
+    console.log(`El nombre "${nombre_empleado}" tiene ${caracteres_nombre} caracteres`)
+}
 
 // 2. Contar apariciones de una vocal en el nombre de un producto
 // Descripción:
@@ -38,24 +38,24 @@ console.log(`El nombre "${nombre_empleado}" tiene ${caracteres_nombre} caractere
 // Salida:
 // La vocal 'o' aparece 3 veces en 'Programador'.
 
-const producto = {nombre: "Programador", precio: 100}
 
 function LetraRepetida(texto, letra) {
     contador = 0
     for (let letra_texto of texto) {
-        if (letra_texto === letra) {
+        if (letra_texto === letra || letra_texto === letra.toUpperCase()) {
             contador++
         }
     }
     return contador
 }
 
-const nombre_producto = producto.nombre
-const letra = "o"
-const veces_letra = LetraRepetida(nombre_producto, letra)
-
-
-console.log(`La vocal "${letra}" aparece ${veces_letra} veces en "${nombre_producto}"`)
+function ejercicio_12() {
+    const producto = {nombre: "Programador", precio: 100}
+    const nombre_producto = producto.nombre
+    const letra = "o"
+    const veces_letra = LetraRepetida(nombre_producto, letra)
+    console.log(`La vocal "${letra}" aparece ${veces_letra} veces en "${nombre_producto}"`)
+}
 
 // 3. Invertir el nombre de una persona
 // Descripción:
@@ -67,20 +67,20 @@ console.log(`La vocal "${letra}" aparece ${veces_letra} veces en "${nombre_produ
 // Salida:
 // Nombre invertido: solraC
 
-const persona = {nombre: "Carlos", edad: 30}
-
 function InvertirTexto(texto) {
     texto_invertido = ""
     for (let i = texto.length - 1; i >= 0; i--) {
-        texto_invertido+= texto[i]
+        texto_invertido += texto[i]
     }
     return texto_invertido
 }
 
-const nombre_persona = persona.nombre
-const nombre_invertido = InvertirTexto(nombre_persona)
-
-console.log(`Nombre invertido: ${nombre_invertido}`)
+function ejercicio_13() {
+    const persona = {nombre: "Carlos", edad: 30}
+    const nombre_persona = persona.nombre
+    const nombre_invertido = InvertirTexto(nombre_persona)
+    console.log(`Nombre invertido: ${nombre_invertido}`)
+}
 
 // 4. Comparar longitudes de nombres entre dos empleados
 // Descripción:
@@ -93,24 +93,21 @@ console.log(`Nombre invertido: ${nombre_invertido}`)
 // Salida:
 // El empleado con el nombre más largo es 'Guillermo' (9 letras).
 
-const empleado1 = {"nombre": "María", "edad": 28}
-const empleado2 = {"nombre": "Guillermo", "edad": 35}
-
 function CompararCantCaracteres(texto1, texto2) {
     if (CantCaracteres(texto1) > CantCaracteres(texto2)) {
-        return true
+        return texto1
     } else {
-        return false
+        return texto2
     }
 }
 
-const nombre_empleado1 = empleado1.nombre
-const nombre_empleado2 = empleado2.nombre
-
-if (CompararCantCaracteres(nombre_empleado1, nombre_empleado2)) {
-    console.log(`El empleado con el nombre más largo es "${nombre_empleado1}" (${CantCaracteres(nombre_empleado1)} letras)`)
-} else {
-    console.log(`El empleado con el nombre más largo es "${nombre_empleado2}" (${CantCaracteres(nombre_empleado2)} letras)`)
+function ejercicio_14() {
+    const empleado1 = {"nombre": "María", "edad": 28}
+    const empleado2 = {"nombre": "Guillermo", "edad": 35}
+    const nombre_empleado1 = empleado1.nombre
+    const nombre_empleado2 = empleado2.nombre
+    const nombmayor_empleado = CompararCantCaracteres(nombre_empleado1, nombre_empleado2)
+    console.log(`El empleado con el nombre más largo es "${nombmayor_empleado}" (${CantCaracteres(nombmayor_empleado)} letras)`)
 }
 
 // 5. Obtener iniciales del cargo de un empleado
@@ -124,20 +121,24 @@ if (CompararCantCaracteres(nombre_empleado1, nombre_empleado2)) {
 // Salida:
 // D.G.A.
 
-const c_empleado = {"cargo": "Director General Académico"}
 
 function InicialesFrase(texto) {
     segmentos = texto.split(" ")
-    iniciales = []
+    iniciales = ""
     for (let i = 0; i < segmentos.length; i++) {
-        iniciales.push(segmentos[i][0])
+        iniciales+= "." + segmentos[i][0]
+        if (i === 0) {
+         iniciales = segmentos[i][0]    
+        }
     }
     return iniciales
 }
 
-const frase = c_empleado.cargo
-
-console.log(`${InicialesFrase(frase)}`)
+function ejercicio_15() {
+    const empleado = {"cargo": "Director General Académico"}
+    const frase = empleado.cargo
+    console.log(`${InicialesFrase(frase)}`)
+}
 
 // 🧱 Bloque 2: Objetos en Listas (versión con arreglos de objetos)
 
@@ -156,6 +157,22 @@ console.log(`${InicialesFrase(frase)}`)
 // Santiago → 8 caracteres  
 // Rosa → 4 caracteres
 
+function ejercicio_21() {
+    const empleados = [
+        {"nombre": "Ana", "edad": 22},
+        {"nombre": "Santiago", "edad": 30},
+        {"nombre": "Rosa", "edad": 27}
+    ]
+    let nombre_empleado_obj = ""
+    let longitud_nomb = 0
+
+    for (let i = 0; i < empleados.length; i++) {
+        nombre_empleado_obj = empleados[i].nombre
+        longitud_nomb = CantCaracteres(nombre_empleado_obj)
+        console.log(`${nombre_empleado_obj} -> ${longitud_nomb} caracteres`)
+    }
+}
+
 // 2. Contar vocales en nombres de empleados
 // Entrada:
 // empleados = [
@@ -172,6 +189,23 @@ console.log(`${InicialesFrase(frase)}`)
 // Marcos → 1 vez 'a'  
 // Lucía → 0 veces 'a'
 
+function ejercicio_22() {
+    const empleados = [
+        {"nombre": "Andrea"},
+        {"nombre": "Marcos"},
+        {"nombre": "Lucía"}
+    ]
+
+    const vocal = "a"
+    let veces_letra = ""
+
+    for (let i = 0; i < empleados.length; i++) {
+        nombre_empleado_obj = empleados[i].nombre
+        veces_letra = LetraRepetida(nombre_empleado_obj, vocal)
+        console.log(`${nombre_empleado_obj} -> ${veces_letra} veces "${vocal}"`)
+    }
+}
+
 // 3. Invertir los nombres de empleados
 // Entrada:
 // empleados = [
@@ -186,6 +220,20 @@ console.log(`${InicialesFrase(frase)}`)
 // Carmen → nemraC  
 // Pedro → ordeP
 
+function ejercicio_23() {
+    const empleados = [
+        {"nombre": "Luis"},
+        {"nombre": "Carmen"},
+        {"nombre": "Pedro"}
+    ]
+
+    for (let i = 0; i < empleados.length; i++) {
+        nombre_empleado_obj = empleados[i].nombre
+        nombre_empleado_inv = InvertirTexto(nombre_empleado_obj)
+        console.log(`${nombre_empleado_obj} -> ${nombre_empleado_inv}`)
+    }
+}
+
 // 4. Comparar longitudes de ciudades de residencia
 // Entrada:
 // empleados = [
@@ -198,6 +246,28 @@ console.log(`${InicialesFrase(frase)}`)
 // Determinar cuál tiene más caracteres.
 // Salida:
 // La ciudad con más letras es 'Guayaquil' (9 letras).
+
+function ejercicio_24() {
+    const empleados = [
+        {nombre: "Carlos", ciudad: "Milagro"},
+        {nombre: "Andrea", ciudad: "Guayaquil"},
+        {nombre: "José", ciudad: "Quito"}
+    ]
+    let ciudad_empleado, ciudad_empleado_cant
+    let ciudadmayor_empleado = ""
+
+    for (let i = 0; i < empleados.length; i++) {
+        ciudad_empleado = empleados[i].ciudad
+        ciudad_empleado_cant = CompararCantCaracteres(ciudadmayor_empleado, ciudad_empleado)
+        if (CantCaracteres(ciudadmayor_empleado) < CantCaracteres(ciudad_empleado_cant)) {
+            ciudadmayor_empleado = ciudad_empleado_cant
+        } else {
+            ciudadmayor_empleado = ciudadmayor_empleado
+        }
+    }
+
+    console.log(`La ciudad con más letras es "${ciudadmayor_empleado}" (${CantCaracteres(ciudadmayor_empleado)} letras)`)
+}
 
 // 5. Obtener iniciales de cargos de varios empleados
 // Entrada:
@@ -213,6 +283,20 @@ console.log(`${InicialesFrase(frase)}`)
 // Director General Académico → D.G.A.  
 // Jefe de Laboratorio → J.D.L.  
 // Asistente Administrativo → A.A.
+
+function ejercicio_25() {
+    const empleados = [
+        {"cargo": "Director General Académico"},
+        {"cargo": "Jefe de Laboratorio"},
+        {"cargo": "Asistente Administrativo"}
+    ]
+
+    for (let i = 0; i < empleados.length; i++) {
+        cargo_empleado_obj = empleados[i].cargo
+        nombre_empleado_iniciales = InicialesFrase(cargo_empleado_obj)
+        console.log(`${cargo_empleado_obj} -> ${nombre_empleado_iniciales}`)
+    }
+}
 
 // ⚙️ Bloque 3: Ejercicios numéricos aplicados a objetos
 

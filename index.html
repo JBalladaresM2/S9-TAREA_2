@@ -6,7 +6,31 @@
     <title>S9-TAREA_2</title>
 </head>
 <body>
-    
+    <select name="ejercicios" id="ejercicios">
+        <option value="ejercicio_11">ejercicio b1 1</option>
+        <option value="ejercicio_12">ejercicio b1 2</option>
+        <option value="ejercicio_13">ejercicio b1 3</option>
+        <option value="ejercicio_14">ejercicio b1 4</option>
+        <option value="ejercicio_15">ejercicio b1 5</option>
+        <option value="ejercicio_21">ejercicio b2 1</option>
+        <option value="ejercicio_22">ejercicio b2 2</option>
+        <option value="ejercicio_23">ejercicio b2 3</option>
+        <option value="ejercicio_24">ejercicio b2 4</option>
+        <option value="ejercicio_25">ejercicio b2 5</option>
+    </select>
+    <button type="button" onclick="console.clear(), ejecutar()">EJECUTAR EJERCICIO</button>
 </body>
     <script src="objetos.js"></script>
+    <script>
+        function ejecutar() {
+            let select = document.getElementById("ejercicios");
+            let valor = select.value; // ejemplo: "ejercicio_3"
+
+            if (valor && typeof window[valor] === "function") {
+            window[valor](); // ejecuta la función definida en sistema_biblioteca.js
+            } else {
+            alert("Selecciona un ejercicio válido");
+            }
+        }
+    </script>
 </html>
