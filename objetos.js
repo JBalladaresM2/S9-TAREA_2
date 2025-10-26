@@ -102,8 +102,8 @@ function CompararCantCaracteres(texto1, texto2) {
 }
 
 function ejercicio_14() {
-    const empleado1 = {"nombre": "María", "edad": 28}
-    const empleado2 = {"nombre": "Guillermo", "edad": 35}
+    const empleado1 = {nombre: "María", edad: 28}
+    const empleado2 = {nombre: "Guillermo", edad: 35}
     const nombre_empleado1 = empleado1.nombre
     const nombre_empleado2 = empleado2.nombre
     const nombmayor_empleado = CompararCantCaracteres(nombre_empleado1, nombre_empleado2)
@@ -159,9 +159,9 @@ function ejercicio_15() {
 
 function ejercicio_21() {
     const empleados = [
-        {"nombre": "Ana", "edad": 22},
-        {"nombre": "Santiago", "edad": 30},
-        {"nombre": "Rosa", "edad": 27}
+        {nombre: "Ana", "edad": 22},
+        {nombre: "Santiago", "edad": 30},
+        {nombre: "Rosa", "edad": 27}
     ]
     let nombre_empleado_obj = ""
     let longitud_nomb = 0
@@ -191,9 +191,9 @@ function ejercicio_21() {
 
 function ejercicio_22() {
     const empleados = [
-        {"nombre": "Andrea"},
-        {"nombre": "Marcos"},
-        {"nombre": "Lucía"}
+        {nombre: "Andrea"},
+        {nombre: "Marcos"},
+        {nombre: "Lucía"}
     ]
 
     const vocal = "a"
@@ -222,9 +222,9 @@ function ejercicio_22() {
 
 function ejercicio_23() {
     const empleados = [
-        {"nombre": "Luis"},
-        {"nombre": "Carmen"},
-        {"nombre": "Pedro"}
+        {nombre: "Luis"},
+        {nombre: "Carmen"},
+        {nombre: "Pedro"}
     ]
 
     for (let i = 0; i < empleados.length; i++) {
@@ -286,9 +286,9 @@ function ejercicio_24() {
 
 function ejercicio_25() {
     const empleados = [
-        {"cargo": "Director General Académico"},
-        {"cargo": "Jefe de Laboratorio"},
-        {"cargo": "Asistente Administrativo"}
+        {cargo: "Director General Académico"},
+        {cargo: "Jefe de Laboratorio"},
+        {cargo: "Asistente Administrativo"}
     ]
 
     for (let i = 0; i < empleados.length; i++) {
@@ -319,7 +319,26 @@ function ejercicio_25() {
 // Promedio de notas ≥ 70: 81.67
 
 function ejercicio_31() {
+    const empleados = [
+        {nombre: "Ana", nota: 65},
+        {nombre: "Luis", nota: 80},
+        {nombre: "Carla", nota: 90},
+        {nombre: "José", nota: 50},
+        {nombre: "Marta", nota: 75}
+    ]
 
+    let contador = 0
+    let promedio = 0
+
+    for (let i = 0; i < empleados.length; i++) {
+        if (empleados[i].nota >= 70) {
+            promedio += empleados[i].nota
+            contador++
+        }
+    }
+
+    const resultado = (promedio / contador).toFixed(2)
+    console.log(`Promedio de notas ≥ 70: ${resultado}`)
 }
 
 // 2. Contar empleados con edad negativa o inválida
@@ -337,7 +356,21 @@ function ejercicio_31() {
 // Cantidad de edades inválidas: 2
 
 function ejercicio_32() {
-    
+    const empleados = [
+        {nombre: "Ana", edad: 22},
+        {nombre: "Luis", edad: -5},
+        {nombre: "Carla", edad: 0}
+    ]
+
+    let contador = 0
+
+    for (let i = 0; i < empleados.length; i++) {
+        if (empleados[i].edad <= 0) {
+            contador++
+        }
+    }
+
+    console.log(`Cantidad de edades inválidas: ${contador}`)
 }
 
 // 3. Promedio de edad: mayores vs menores de edad
@@ -357,7 +390,34 @@ function ejercicio_32() {
 // Promedio de menores: 16.00
 
 function ejercicio_33() {
-    
+    let empleados = [
+        {nombre: "Ana", edad: 17},
+        {nombre: "Luis", edad: 20},
+        {nombre: "Carla", edad: 35},
+        {nombre: "José", edad: 15},
+        {nombre: "Marta", edad: 18}
+    ]
+
+    let contador_mayoredad = 0
+    let promedio_mayoredad = 0
+    let contador_menoredad = 0
+    let promedio_menoredad = 0
+
+    for (let i = 0; i < empleados.length; i++) {
+        if (empleados[i].edad >= 18) {
+            promedio_mayoredad += empleados[i].edad
+            contador_mayoredad++
+        } else {
+            promedio_menoredad += empleados[i].edad
+            contador_menoredad++
+        }
+    }
+
+    const resultado_mayores = (promedio_mayoredad / contador_mayoredad).toFixed(2)
+    const resultado_menores = (promedio_menoredad / contador_menoredad).toFixed(2)
+
+    console.log(`Promedio de mayores: ${resultado_mayores}`)
+    console.log(`Promedio de menores: ${resultado_menores}`)
 }
 
 // 4. Mostrar la tabla de multiplicar del salario
@@ -373,7 +433,17 @@ function ejercicio_33() {
 // 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000
 
 function ejercicio_34() {
-    
+    const empleado = {nombre: "Luis", salario: 300}
+    let multiplicado = 0
+    let tabla_multiplicado = []
+
+    for (let i = 1; i <= 10; i++) {
+        multiplicado = empleado.salario * i
+        tabla_multiplicado.push(multiplicado)
+    }
+
+    console.log(`Tabla del salario (${empleado.salario}):`)
+    console.log(`${tabla_multiplicado}`)
 }
 
 // 5. Promedio de salarios pares e impares
@@ -393,5 +463,32 @@ function ejercicio_34() {
 // Promedio de salarios impares: 593.33
 
 function ejercicio_35() {
-    
+    const empleados = [
+        {nombre: "Ana", salario: 450},
+        {nombre: "Luis", salario: 500},
+        {nombre: "Carla", salario: 625},
+        {nombre: "José", salario: 800},
+        {nombre: "Marta", salario: 705}
+    ]
+
+    let contador_pares = 0
+    let promedio_pares = 0
+    let contador_impares = 0
+    let promedio_impares = 0
+
+    for (let i = 0; i < empleados.length; i++) {
+        if (empleados[i].salario % 2 === 0) {
+            promedio_pares += empleados[i].salario
+            contador_pares++
+        } else {
+            promedio_impares += empleados[i].salario
+            contador_impares++
+        }
+    }
+
+    const resultado_pares = (promedio_pares / contador_pares).toFixed(2)
+    const resultado_impares = (promedio_impares / contador_impares).toFixed(2)
+
+    console.log(`Promedio de salarios pares: ${resultado_pares}`)
+    console.log(`Promedio de salarios impares: ${resultado_impares}`)
 }
