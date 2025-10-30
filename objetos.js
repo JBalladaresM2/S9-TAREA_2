@@ -318,6 +318,10 @@ function ejercicio_25() {
 // Salida:
 // Promedio de notas ≥ 70: 81.67
 
+function CalcularPromedio(sumatoria, cantidad) {
+    return (sumatoria / cantidad).toFixed(2)
+}
+
 function ejercicio_31() {
     const empleados = [
         {nombre: "Ana", nota: 65},
@@ -337,7 +341,7 @@ function ejercicio_31() {
         }
     }
 
-    const resultado = (promedio / contador).toFixed(2)
+    const resultado = CalcularPromedio(promedio, contador)
     console.log(`Promedio de notas ≥ 70: ${resultado}`)
 }
 
@@ -413,8 +417,8 @@ function ejercicio_33() {
         }
     }
 
-    const resultado_mayores = (promedio_mayoredad / contador_mayoredad).toFixed(2)
-    const resultado_menores = (promedio_menoredad / contador_menoredad).toFixed(2)
+    const resultado_mayores = CalcularPromedio(promedio_mayoredad, contador_mayoredad)
+    const resultado_menores = CalcularPromedio(promedio_menoredad, contador_menoredad)
 
     console.log(`Promedio de mayores: ${resultado_mayores}`)
     console.log(`Promedio de menores: ${resultado_menores}`)
@@ -432,18 +436,25 @@ function ejercicio_33() {
 // Tabla del salario (300):
 // 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000
 
-function ejercicio_34() {
-    const empleado = {nombre: "Luis", salario: 300}
+function TablaValorMultiplicado(inicio, final, objeto, clave) {
     let multiplicado = 0
     let tabla_multiplicado = []
 
-    for (let i = 1; i <= 10; i++) {
-        multiplicado = empleado.salario * i
+    for (let i = inicio; i <= final; i++) {
+        multiplicado = objeto[clave] * i
         tabla_multiplicado.push(multiplicado)
     }
 
+    return tabla_multiplicado
+}
+
+function ejercicio_34() {
+    const empleado = {nombre: "Luis", salario: 300}
+
+    const tabla_salario_multiplicado = TablaValorMultiplicado(1, 10, empleado, "salario")
+
     console.log(`Tabla del salario (${empleado.salario}):`)
-    console.log(`${tabla_multiplicado}`)
+    console.log(`${tabla_salario_multiplicado}`)
 }
 
 // 5. Promedio de salarios pares e impares
@@ -486,8 +497,8 @@ function ejercicio_35() {
         }
     }
 
-    const resultado_pares = (promedio_pares / contador_pares).toFixed(2)
-    const resultado_impares = (promedio_impares / contador_impares).toFixed(2)
+    const resultado_pares = CalcularPromedio(promedio_pares, contador_pares)
+    const resultado_impares = CalcularPromedio(promedio_impares, contador_impares)
 
     console.log(`Promedio de salarios pares: ${resultado_pares}`)
     console.log(`Promedio de salarios impares: ${resultado_impares}`)
